@@ -1,0 +1,22 @@
+<div *ngIf="isVisible" class="modal" (click)="closeModal()">
+        <div class="modal-content" (click)="$event.stopPropagation()">
+                <input #modalInput type="text" placeholder="Search for products" (input)="onInputChange($event)">
+
+
+                <ul *ngIf="filteredProducts.length > 0">
+
+
+                        <div class="products-container">
+                                
+                                        <li *ngFor="let product of filteredProducts" class="product-card">
+                                                <img [src]="product.images[0]" alt="{{ product.title }}">
+                                                <h3>{{ product.title }}</h3>
+                                                <p><strong>{{ product.price | currency: 'USD'}}</strong> 10% off </p>
+                                                <button class="select-button">Select Shead</button>
+                                        </li>
+                               
+                        </div>
+
+                </ul>
+        </div>
+</div>
