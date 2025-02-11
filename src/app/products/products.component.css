@@ -20,7 +20,15 @@ h3 {
         font-size: 18px;
         
 }
-
+i{
+        margin-left: 10px;
+        cursor: pointer;
+        font-size: 17px;
+        
+}
+i:hover{
+        color: rgb(249, 112, 135);;
+}
 p {
         margin-top: 30px;
         color: rgb(243, 174, 186);
@@ -47,4 +55,7 @@ img {
         width: 200px;
         font-weight: 600;
 
+}
+.select-button:hover{
+        background-color: rgb(254, 245, 245);
 }

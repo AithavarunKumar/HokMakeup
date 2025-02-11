@@ -4,10 +4,10 @@
             <p class="login-heading">Login</p>
             <p>Create an account with your email to start logging in</p>
             <div class="form-group">
-                <input type="email" id="email" name="email" [(ngModel)]="email" required email #emailInput="ngModel"
+                <input type="email" id="email" name="email" [(ngModel)]="email"  required email #emailInput="ngModel"
                     placeholder="Enter your email" class="form-control" />
                 
-                <div *ngIf="emailInput.invalid && emailInput.touched">
+                <div *ngIf="emailInput.invalid && emailInput.touched" >
                     <small *ngIf="emailInput.errors?.['required']">Email is required.</small>
                     <small *ngIf="emailInput.errors?.['email']">Please enter a valid email.</small>
                 </div>

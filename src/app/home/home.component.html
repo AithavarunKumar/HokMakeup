@@ -1,4 +1,9 @@
 <app-header-component></app-header-component>
+<div *ngIf="toastMessage$ | async as toastMessage" class="toast">
+        <p class="toastmessgae">{{ toastMessage }}</p>
+      </div>
+      
+      
 <div class="video-container">
         <video width="100%" height="auto" autoplay muted loop>
                 <source src="images/video.mp4">
