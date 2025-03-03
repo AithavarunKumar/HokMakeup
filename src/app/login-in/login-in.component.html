@@ -1,31 +1,36 @@
 <div class="container">
-  <h2>Login</h2>
-  <form (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm">
-    <div>
-      <label for="email">Email</label>
-      <input
-        type="email"
-        id="email"
-        name="email"
-        [(ngModel)]="email"
-        required
-        placeholder="Enter your email"
-      />
-    </div>
-
-    <button type="submit">Send OTP</button>
-  </form>
-
-  <div *ngIf="email">
-    <label for="otp">OTP</label>
-    <input
-      type="text"
-      id="otp"
-      name="otp"
-      [(ngModel)]="otp"
-      required
-      placeholder="Enter OTP"
-    />
-    <button (click)="verifyOtp()">Verify OTP</button>
+    <form (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm">
+      <div>
+        <img src="images/logo.avif" alt="">
+        <p class="login-heading">Login</p>
+        <p>Create an account with your email to start logging in</p>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          [(ngModel)]="email"
+          required
+          placeholder="Enter your email"
+        />
+      </div>
+  
+      <!-- OTP input field appears after OTP is sent -->
+      <div *ngIf="otpSent">
+        <input
+          type="text"
+          id="otp"
+          name="otp"
+          [(ngModel)]="otp"
+          required
+          placeholder="Enter OTP"
+        />
+      </div>
+  
+      <!-- Show Send OTP button only if OTP hasn't been sent -->
+      <button *ngIf="!otpSent" type="submit">Send OTP</button>
+  
+      <!-- Show Verify OTP button after OTP is sent -->
+      <button *ngIf="otpSent" (click)="verifyOtp()">Verify OTP</button>
+    </form>
   </div>
-</div>
+  

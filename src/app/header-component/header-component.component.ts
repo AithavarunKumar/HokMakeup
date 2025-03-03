@@ -10,7 +10,7 @@ import { SearchComponent } from '../search/search.component';
 export class HeaderComponentComponent {
   constructor(private router:Router){}
   logout(){
-    sessionStorage.removeItem('user'); 
+    sessionStorage.removeItem('token'); 
     this.router.navigate(['/login']).then(() => {
       window.history.pushState(null, '', window.location.href);
     });

@@ -14,7 +14,7 @@ export class LoginInComponent implements OnInit{
   email: string = '';
   otp: string = '';
   token: string | null = null;
-
+  otpSent: boolean = false;
   constructor(private router: Router, private http: HttpClient) {}
 
   ngOnInit(): void {}
@@ -31,6 +31,7 @@ export class LoginInComponent implements OnInit{
       .subscribe(
         (response) => {
           console.log('OTP sent successfully');
+          this.otpSent = true;
         },
         (error) => {
           console.error('Error sending OTP', error);
