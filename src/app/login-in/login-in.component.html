@@ -1,19 +1,31 @@
-<div class="login-container">
-        <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
-                <img src="images/logo.avif" alt="">
-            <p class="login-heading">Login</p>
-            <p>Create an account with your email to start logging in</p>
-            <div class="form-group">
-                <input type="email" id="email" name="email" [(ngModel)]="email"  required email #emailInput="ngModel"
-                    placeholder="Enter your email" class="form-control" />
-                
-                <div *ngIf="emailInput.invalid && emailInput.touched" >
-                    <small *ngIf="emailInput.errors?.['required']">Email is required.</small>
-                    <small *ngIf="emailInput.errors?.['email']">Please enter a valid email.</small>
-                </div>
-            </div>
-    
-            <button type="submit" [disabled]="loginForm.invalid">Continue</button>
-        </form>
+<div class="container">
+  <h2>Login</h2>
+  <form (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm">
+    <div>
+      <label for="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        [(ngModel)]="email"
+        required
+        placeholder="Enter your email"
+      />
     </div>
-    
+
+    <button type="submit">Send OTP</button>
+  </form>
+
+  <div *ngIf="email">
+    <label for="otp">OTP</label>
+    <input
+      type="text"
+      id="otp"
+      name="otp"
+      [(ngModel)]="otp"
+      required
+      placeholder="Enter OTP"
+    />
+    <button (click)="verifyOtp()">Verify OTP</button>
+  </div>
+</div>

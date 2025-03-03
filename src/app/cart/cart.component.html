@@ -1,6 +1,8 @@
 <div class="cart-container">
         <h2>Your Cart</h2>
-
+        <div [ngClass]="{'active': isActive , 'inactive':!isActive}">
+                status:{{isActive?'available':'Empty'}}
+        </div>
         <div *ngFor="let product of products$ | async" class="cart-item">
                 <img [src]="product.images[0]" alt="{{ product.title }}">
                 <div>

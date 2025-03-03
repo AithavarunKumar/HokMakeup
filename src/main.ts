@@ -6,7 +6,7 @@ import { routes } from './app/app.routes';
 import { provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
-import { importProvidersFrom, isDevMode } from '@angular/core';
+import {  isDevMode } from '@angular/core';
 import { cartReducer } from './app/store/reducers/cart.reducer';
 
 bootstrapApplication(AppComponent, {

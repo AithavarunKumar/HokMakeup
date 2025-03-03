@@ -8,5 +8,5 @@ export const routes: Routes = [
         { path: 'login', component: LoginInComponent },
         { path: '', redirectTo: '/login', pathMatch: 'full' },
         { path: 'home', component: HomeComponent, canActivate: [authGuard] },
-        { path: 'cart', component: CartComponent }
+        { path: 'cart', component: CartComponent },
 ];

@@ -16,11 +16,12 @@ import { CommonModule, CurrencyPipe } from '@angular/common';
 export class CartComponent {
   products$: Observable<Product[]>;
   totalPrice$: Observable<number>;
+  isActive:boolean=false;
 
   constructor(private store: Store<{ cart: CartState }>) {
     // Ensure products$ is always an array (even if empty initially)
     this.products$ = this.store.pipe(select(state => state.cart.products));
-
+    
     // Calculate total price
     this.totalPrice$ = this.products$.pipe(
       map(products => {
@@ -28,6 +29,10 @@ export class CartComponent {
         return products.reduce((sum, product) => sum + product.price, 0);
       })
     );
+    // Check if the cart is empty and update isActive flag
+    this.products$.subscribe(products => {
+      this.isActive = products && products.length > 0;
+    });
   }
   removeFromCart(productId: number): void {
     // Dispatch the action to remove the product from the cart
