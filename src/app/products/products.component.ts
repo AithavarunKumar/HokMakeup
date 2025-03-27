@@ -1,6 +1,6 @@
 // src/app/products/products.component.ts
 import { CommonModule, CurrencyPipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { select, Store } from '@ngrx/store';
 import { addToCart } from '../store/actions/cart.actions';
@@ -15,13 +15,17 @@ import { ToastService } from '../toast.service';
 })
 export class ProductsComponent implements OnInit {
   Products: Product[] = [];
-  constructor(private dataService: DataService, private store: Store , private toastService:ToastService) {}
+  visibleProducts: Product[] = [];
+  currentIndex: number = 0;
+  itemsPerPage: number = 4; // Number of products shown at a time
+
+  constructor(private dataService: DataService, private store: Store, private toastService: ToastService) {}
 
   ngOnInit(): void {
     this.dataService.getProducts().subscribe(
       (response) => {
-        this.Products = response; 
-        console.log(this.Products);
+        this.Products = response;
+        this.updateVisibleProducts();
       },
       (error) => {
         console.error('Error fetching products:', error);
@@ -29,10 +33,35 @@ export class ProductsComponent implements OnInit {
     );
   }
 
+  updateVisibleProducts(): void {
+    this.visibleProducts = this.Products.slice(this.currentIndex, this.currentIndex + this.itemsPerPage);
+  }
+
+  nextProducts(): void {
+    if (this.currentIndex + this.itemsPerPage < this.Products.length) {
+      this.currentIndex += this.itemsPerPage;
+      this.updateVisibleProducts();
+    }
+  }
+
+  prevProducts(): void {
+    if (this.currentIndex - this.itemsPerPage >= 0) {
+      this.currentIndex -= this.itemsPerPage;
+      this.updateVisibleProducts();
+    }
+  }
+
+  @HostListener('window:keydown', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent): void {
+    if (event.key === 'ArrowRight') {
+      this.nextProducts();
+    } else if (event.key === 'ArrowLeft') {
+      this.prevProducts();
+    }
+  }
+
   addToCart(product: Product): void {
-    // Dispatch the action to add the product to the cart
     this.store.dispatch(addToCart({ product }));
-    this.toastService.showToast('added to the cart!');
-    
+    this.toastService.showToast('Added to the cart!');
   }
 }
