@@ -1,5 +1,5 @@
 <!-- Search bar to open modal -->
-<i class="fas fa-search" (click)="openModal()"></i>
+<i class="fas fa-search" id="fasfasearch" (keydown.enter)="openModal()" tabindex="0"  (click)="openModal()"></i>
 
 <!-- Modal Component -->
 <app-modal [isVisible]="isModalVisible" (close)="closeModal()"></app-modal>

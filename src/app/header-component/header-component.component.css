@@ -59,7 +59,14 @@ a:hover{
     z-index: 1;
     width: 100%;
     padding: 10px;
+    background-color: white; 
 }
+
+/* Show dropdown when it's active */
+.dropdown-content.show {
+    display: block;
+}
+
 
 .dropdown-content div {
     padding: 8px;
@@ -67,11 +74,9 @@ a:hover{
     border-radius: 4px;
 }
 
-
-/* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
     display: block;
-}
+} 
 
 .collections-Container {
     display: flex;
@@ -101,7 +106,10 @@ a:hover{
 li:focus {
     outline: 2px solid #050505; /* High contrast focus */
 }
-
+#search-box{
+    margin-top: 11px;
+    
+}
 .hok-rewardsimage {
     width: 80px;
     height: 40px;

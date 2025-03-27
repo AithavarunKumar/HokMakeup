@@ -5,9 +5,10 @@
                         <div class="collections-Container">
                                 <div class="dropdown">
                                         <div class="dropdown-btn" tabindex="0"
-                                        >New Arrivals</div>
-                                        <!-- Dropdown Menu for New Arrivals -->
-                                        <div class="dropdown-content">
+                                                [attr.aria-expanded]="activeDropdown === 'newArrivals'"
+                                                (click)="toggleDropdown('newArrivals')"
+                                                (keydown.enter)="toggleDropdown('newArrivals')">New Arrivals</div>
+                                        <div class="dropdown-content" [class.show]="activeDropdown==='newArrivals'">
                                                 <a href="#">Eyes</a>
                                                 <a href="">Brushes</a>
                                                 <a href="">Face</a>
@@ -23,9 +24,12 @@
                                         </div>
                                 </div>
                                 <div class="dropdown">
-                                        <div class="dropdown-btn" tabindex="0">Brands</div>
+                                        <div class="dropdown-btn" tabindex="0"
+                                                [attr.aria-expanded]="activeDropdown === 'Brands'"
+                                                (click)="toggleDropdown('Brands')"
+                                                (keydown.enter)="toggleDropdown('Brands')">Brands</div>
                                         <!-- Dropdown Menu for Brands -->
-                                        <div class="dropdown-content">
+                                        <div class="dropdown-content" [class.show]="activeDropdown==='Brands'">
                                                 <a href="">Eyes</a>
                                                 <a href="">Brushes</a>
                                                 <a href="">Face</a>
@@ -41,9 +45,12 @@
                                         </div>
                                 </div>
                                 <div class="dropdown">
-                                        <div class="dropdown-btn" tabindex="0">Makeup</div>
+                                        <div class="dropdown-btn" tabindex="0"
+                                                [attr.aria-expanded]="activeDropdown === 'Makeup'"
+                                                (click)="toggleDropdown('Makeup')"
+                                                (keydown.enter)="toggleDropdown('Makeup')">Makeup</div>
                                         <!-- Dropdown Menu for Makeup -->
-                                        <div class="dropdown-content">
+                                        <div class="dropdown-content" [class.show]="activeDropdown==='Makeup'">
                                                 <a href="">Eyes</a>
                                                 <a href="">Brushes</a>
                                                 <a href="">Face</a>
@@ -59,9 +66,12 @@
                                         </div>
                                 </div>
                                 <div class="dropdown">
-                                        <div class="dropdown-btn" tabindex="0">Skin</div>
+                                        <div class="dropdown-btn" tabindex="0"
+                                                [attr.aria-expanded]="activeDropdown === 'Skin'"
+                                                (click)="toggleDropdown('Skin')"
+                                                (keydown.enter)="toggleDropdown('Skin')">Skin</div>
                                         <!-- Dropdown Menu for Skin -->
-                                        <div class="dropdown-content">
+                                        <div class="dropdown-content" [class.show]="activeDropdown==='Skin'">
                                                 <a href="">Eyes</a>
                                                 <a href="">Brushes</a>
                                                 <a href="">Face</a>
@@ -76,10 +86,13 @@
                                                 <a href="">Nails</a>
                                         </div>
                                 </div>
-                                <div class="dropdown" >
-                                        <div class="dropdown-btn" tabindex="0">Hair</div>
+                                <div class="dropdown">
+                                        <div class="dropdown-btn" tabindex="0"
+                                                [attr.aria-expanded]="activeDropdown === 'Hair'"
+                                                (click)="toggleDropdown('Hair')"
+                                                (keydown.enter)="toggleDropdown('Hair')">Hair</div>
                                         <!-- Dropdown Menu for Hair -->
-                                        <div class="dropdown-content">
+                                        <div class="dropdown-content" [class.show]="activeDropdown==='Hair'">
                                                 <a href="">Eyes</a>
                                                 <a href="">Brushes</a>
                                                 <a href="">Face</a>
@@ -95,9 +108,12 @@
                                         </div>
                                 </div>
                                 <div class="dropdown">
-                                        <div class="dropdown-btn" tabindex="0">Combo & Gift Sets</div>
+                                        <div class="dropdown-btn" tabindex="0"
+                                                [attr.aria-expanded]="activeDropdown === 'Combo'"
+                                                (click)="toggleDropdown('Combo')"
+                                                (keydown.enter)="toggleDropdown('Combo')">Combo & Gift Sets</div>
                                         <!-- Dropdown Menu for Combo & Gift Sets -->
-                                        <div class="dropdown-content">
+                                        <div class="dropdown-content" [class.show]="activeDropdown==='Combo'">
                                                 <a href="">Eyes</a>
                                                 <a href="">Brushes</a>
                                                 <a href="">Face</a>
@@ -113,9 +129,12 @@
                                         </div>
                                 </div>
                                 <div class="dropdown">
-                                        <div class="dropdown-btn" tabindex="0">Fragrance</div>
+                                        <div class="dropdown-btn" tabindex="0"
+                                                [attr.aria-expanded]="activeDropdown === 'Fragrance'"
+                                                (click)="toggleDropdown('Fragrance')"
+                                                (keydown.enter)="toggleDropdown('Fragrance')">Fragrance</div>
                                         <!-- Dropdown Menu for Fragrance -->
-                                        <div class="dropdown-content">
+                                        <div class="dropdown-content" [class.show]="activeDropdown==='Fragrance'">
                                                 <div>
                                                         <a href="">Eyes</a>
                                                         <a href="">Brushes</a>
@@ -129,29 +148,25 @@
                                                         <a href="">Kits</a>
                                                         <a href="">Lipsticks</a>
                                                         <a href="">Nails</a>
-        
+
                                                 </div>
-                                                
+
                                         </div>
                                 </div>
-                                <div tabindex="0"><img src="images/hok-rewards.webp" alt="" class="hok-rewardsimage"></div>
+                                <div tabindex="0"><img src="images/hok-rewards.webp" alt="" class="hok-rewardsimage">
+                                </div>
                         </div>
                 </div>
                 <ul class="second-container">
-                        <li class="Search-icon" tabindex="0">
-                                <label for="search-box" class="sr-only">Search</label>
-                                <app-search id="search-box"></app-search>
-                            </li>                            
+                        <app-search id="search-box"></app-search>
                         <li tabindex="0"><i class="fas fa-heart"></i></li>
-                        <li tabindex="0" (click)="moveToCart()" (keydown.enter)="moveToCart()"
-                        aria-label="Go to cart">
-                            <i class="fas fa-shopping-cart"></i>
+                        <li tabindex="0" (click)="moveToCart()" (keydown.enter)="moveToCart()" aria-label="Go to cart">
+                                <i class="fas fa-shopping-cart"></i>
                         </li>
-                        <li tabindex="0" (keydown.enter)="logout()" (click)="logout()" 
-                        aria-label="Logout">
-                            <i class="fas fa-sign-out-alt"></i>
+                        <li tabindex="0" (keydown.enter)="logout()" (click)="logout()" aria-label="Logout">
+                                <i class="fas fa-sign-out-alt"></i>
                         </li>
-                    </ul>
-                    
+                </ul>
+
         </nav>
 </div>
