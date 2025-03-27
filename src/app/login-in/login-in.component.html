@@ -11,6 +11,7 @@
           [(ngModel)]="email"
           required
           placeholder="Enter your email"
+          aria-required="true"
         />
       </div>
   
@@ -27,10 +28,10 @@
       </div>
   
       <!-- Show Send OTP button only if OTP hasn't been sent -->
-      <button *ngIf="!otpSent" type="submit">Send OTP</button>
+      <button *ngIf="!otpSent" type="submit" tabindex="0">Send OTP</button>
   
       <!-- Show Verify OTP button after OTP is sent -->
-      <button *ngIf="otpSent" (click)="verifyOtp()">Verify OTP</button>
+      <button *ngIf="otpSent" (click)="verifyOtp()" tabindex="0">Verify OTP</button>
     </form>
   </div>
   

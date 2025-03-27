@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { SearchComponent } from '../search/search.component';
 @Component({
@@ -18,4 +18,5 @@ export class HeaderComponentComponent {
   moveToCart(){
     this.router.navigate(['/cart']);
   }
+  
 }

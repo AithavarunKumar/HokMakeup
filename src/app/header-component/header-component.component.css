@@ -92,7 +92,14 @@ a:hover{
 
     li {
         list-style-type: none;
+        height: 20px;
+        width: 20px;
+        padding: 10px;
     }
+}
+.dropdown-btn:focus,
+li:focus {
+    outline: 2px solid #050505; /* High contrast focus */
 }
 
 .hok-rewardsimage {

@@ -1,10 +1,11 @@
 <div class="Header-Container">
-        <nav>
+        <nav role="navigation" aria-label="Main Navigation">
                 <div class="first-container">
-                        <img src="images/logo.avif" alt="">
+                        <img src="images/logo.avif" alt="HOKMAKEUP">
                         <div class="collections-Container">
                                 <div class="dropdown">
-                                        <div class="dropdown-btn">New Arrivals</div>
+                                        <div class="dropdown-btn" tabindex="0"
+                                        >New Arrivals</div>
                                         <!-- Dropdown Menu for New Arrivals -->
                                         <div class="dropdown-content">
                                                 <a href="#">Eyes</a>
@@ -22,7 +23,7 @@
                                         </div>
                                 </div>
                                 <div class="dropdown">
-                                        <div class="dropdown-btn">Brands</div>
+                                        <div class="dropdown-btn" tabindex="0">Brands</div>
                                         <!-- Dropdown Menu for Brands -->
                                         <div class="dropdown-content">
                                                 <a href="">Eyes</a>
@@ -40,7 +41,7 @@
                                         </div>
                                 </div>
                                 <div class="dropdown">
-                                        <div class="dropdown-btn">Makeup</div>
+                                        <div class="dropdown-btn" tabindex="0">Makeup</div>
                                         <!-- Dropdown Menu for Makeup -->
                                         <div class="dropdown-content">
                                                 <a href="">Eyes</a>
@@ -58,7 +59,7 @@
                                         </div>
                                 </div>
                                 <div class="dropdown">
-                                        <div class="dropdown-btn">Skin</div>
+                                        <div class="dropdown-btn" tabindex="0">Skin</div>
                                         <!-- Dropdown Menu for Skin -->
                                         <div class="dropdown-content">
                                                 <a href="">Eyes</a>
@@ -75,8 +76,8 @@
                                                 <a href="">Nails</a>
                                         </div>
                                 </div>
-                                <div class="dropdown">
-                                        <div class="dropdown-btn">Hair</div>
+                                <div class="dropdown" >
+                                        <div class="dropdown-btn" tabindex="0">Hair</div>
                                         <!-- Dropdown Menu for Hair -->
                                         <div class="dropdown-content">
                                                 <a href="">Eyes</a>
@@ -94,7 +95,7 @@
                                         </div>
                                 </div>
                                 <div class="dropdown">
-                                        <div class="dropdown-btn">Combo & Gift Sets</div>
+                                        <div class="dropdown-btn" tabindex="0">Combo & Gift Sets</div>
                                         <!-- Dropdown Menu for Combo & Gift Sets -->
                                         <div class="dropdown-content">
                                                 <a href="">Eyes</a>
@@ -112,7 +113,7 @@
                                         </div>
                                 </div>
                                 <div class="dropdown">
-                                        <div class="dropdown-btn">Fragrance</div>
+                                        <div class="dropdown-btn" tabindex="0">Fragrance</div>
                                         <!-- Dropdown Menu for Fragrance -->
                                         <div class="dropdown-content">
                                                 <div>
@@ -133,14 +134,24 @@
                                                 
                                         </div>
                                 </div>
-                                <div><img src="images/hok-rewards.webp" alt="" class="hok-rewardsimage"></div>
+                                <div tabindex="0"><img src="images/hok-rewards.webp" alt="" class="hok-rewardsimage"></div>
                         </div>
                 </div>
-                <div class="second-container">
-                        <li class="Search-icon"><app-search></app-search></li>
-                        <li><i class="fas fa-heart"></i></li>
-                        <li><i class="fas fa-shopping-cart" (click)="moveToCart()"></i></li>
-                        <li><i class="fas fa-sign-out-alt" (click)="logout()"></i></li>
-                </div>
+                <ul class="second-container">
+                        <li class="Search-icon" tabindex="0">
+                                <label for="search-box" class="sr-only">Search</label>
+                                <app-search id="search-box"></app-search>
+                            </li>                            
+                        <li tabindex="0"><i class="fas fa-heart"></i></li>
+                        <li tabindex="0" (click)="moveToCart()" (keydown.enter)="moveToCart()"
+                        aria-label="Go to cart">
+                            <i class="fas fa-shopping-cart"></i>
+                        </li>
+                        <li tabindex="0" (keydown.enter)="logout()" (click)="logout()" 
+                        aria-label="Logout">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </li>
+                    </ul>
+                    
         </nav>
 </div>

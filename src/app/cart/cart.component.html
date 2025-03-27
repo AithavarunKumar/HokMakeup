@@ -1,21 +1,35 @@
-<div class="cart-container">
-        <h2>Your Cart</h2>
-        <div [ngClass]="{'active': isActive , 'inactive':!isActive}">
-                status:{{isActive?'available':'Empty'}}
-        </div>
-        <div *ngFor="let product of products$ | async" class="cart-item">
-                <img [src]="product.images[0]" alt="{{ product.title }}">
-                <div>
-                        <h3>{{ product.title }}</h3>
-                        <p>{{ product.price | currency: 'INR' }}</p>
-                </div>
-                <button (click)="removeFromCart(product.id)">Remove</button>
+<div class="cart-container" role="region" aria-labelledby="cart-heading">
+        <h2 id="cart-heading">Your Cart</h2>
+
+        <!-- Cart Status Announcement -->
+        <div [ngClass]="{'active': isActive , 'inactive':!isActive}" aria-live="polite" aria-atomic="true">
+                <span>Status: {{ isActive ? 'Available' : 'Empty' }}</span>
         </div>
 
+        <!-- Cart Items List -->
+        <div role="list">
+                <div *ngFor="let product of products$ | async" class="cart-item" role="listitem">
+                        <img [src]="product.images[0]" [alt]="product.title" role="img">
+                        <div>
+                                <h3>{{ product.title }}</h3>
+                                <p>{{ product.price | currency: 'INR' }}</p>
+                        </div>
+
+                        <button (click)="removeFromCart(product.id)">
+                                Remove
+                        </button>
+                </div>
+        </div>
+
+        <!-- Cart Summary -->
         <div class="cart-summary">
-                <h3>Total:
-                        {{ totalPrice$ | async | currency: 'INR' }}
+                <h3 id="total-price-label">Total:
+                        <span aria-describedby="total-price-label">
+                                {{ totalPrice$ | async | currency: 'INR' }}
+                        </span>
                 </h3>
-                <button>Proceed to Checkout</button>
+                <button>
+                        Proceed to Checkout
+                </button>
         </div>
 </div>
