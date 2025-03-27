@@ -1,23 +1,29 @@
 <div class="products-wrapper">
   <!-- Left Navigation Button -->
-  <button class="nav-button left" (click)="prevProducts()" [disabled]="currentIndex === 0" tabindex="0" aria-label="Previous Products" tabindex="0">
-    <i class="fas fa-chevron-left" ></i>
+  <button class="nav-button left" (click)="prevProducts()" [disabled]="currentIndex === 0" 
+    tabindex="0" aria-label="Previous Products">
+    <i class="fas fa-chevron-left"></i>
   </button>
 
   <!-- Products Display -->
   <div class="products-container">
-    <div *ngFor="let product of visibleProducts" class="product-card">
-      <img [src]="product.images[0]" alt="{{ product.title }}">
-      <h3>{{ product.title }}</h3>
-      <p><strong>{{ product.price | currency: 'INR' }}</strong> 10% off <i class="fas fa-heart"></i></p>
-      <button (click)="addToCart(product)" tabindex="1" class="select-button" aria-label="add to cart button">
+    <div *ngFor="let product of visibleProducts; let i = index" class="product-card">
+      <img [src]="product.images[0]" alt="{{ product.title }}" >
+      <h3 tabindex="-1">{{ product.title }}</h3>
+      <p >
+        <strong>{{ product.price | currency: 'INR' }}</strong> 10% off 
+        <i class="fas fa-heart" tabindex="-1"></i>
+      </p>
+      <button #cartButton (click)="addToCart(product)" class="select-button" 
+        aria-label="Add to Cart Button">
         Add to Cart
       </button>
     </div>
   </div>
 
   <!-- Right Navigation Button -->
-  <button class="nav-button right" (click)="nextProducts()" [disabled]="currentIndex + itemsPerPage >= Products.length" tabindex="0" aria-label="Next Products" tabindex="0">
-    <i class="fas fa-chevron-right" ></i>
+  <button class="nav-button right" (click)="nextProducts()" 
+    [disabled]="currentIndex + itemsPerPage >= Products.length" tabindex="0" aria-label="Next Products">
+    <i class="fas fa-chevron-right"></i>
   </button>
 </div>
